@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhijit Swain | Skills</title>
+    <link rel="stylesheet" href="../css/skill.css">
+<body>
+    <div class="cursor-tracker" id="cursorTracker"></div>
+    <div class="skills-container">
+        <div class="skills-title">Technical Skills</div>
+        <ul class="skills-list">
+            <li><strong>Data Structures &amp; Algorithms</strong> — Proficient in problem solving, algorithmic thinking, and optimizing code for efficiency.</li>
+            <li><strong>Socket.IO</strong> — Experienced in building real-time, event-driven web applications and implementing WebSocket-based communication.</li>
+            <li><strong>MERN Stack</strong> — Skilled in developing full-stack applications using MongoDB, Express.js, React.js, and Node.js.</li>
+            <li><strong>JavaScript</strong> — Advanced knowledge of modern JavaScript (ES6+)</li>
+            <li><strong>RESTful APIs</strong> — Designing, building, and consuming robust REST APIs for scalable backend services.</li>
+            <li><strong>UI/UX Design</strong> — Creating intuitive and visually appealing user interfaces with a focus on user experience.</li>
+            <li><strong>Version Control (Git)</strong> — Collaborative development and code management using Git and GitHub.</li>
+        </ul>
+        <button class="go-main-btn" id="goMainBtn">Go to Main Page</button>
+    </div>
+    <script>
+        const cursor = document.getElementById('cursorTracker');
+
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+        let trackerX = mouseX;
+        let trackerY = mouseY;
+        const delay = 0.18;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function animateCursor() {
+            trackerX += (mouseX - trackerX) * delay;
+            trackerY += (mouseY - trackerY) * delay;
+            cursor.style.left = trackerX + 'px';
+            cursor.style.top = trackerY + 'px';
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        const interactiveSelectors = [
+            'a', 'button', 'input', 'textarea', 'select', 'label', 'th', 'td'
+        ];
+        interactiveSelectors.forEach(selector => {
+            document.querySelectorAll(selector).forEach(el => {
+                el.addEventListener('mouseenter', () => cursor.classList.add('active'));
+                el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
+            });
+        });
+
+        document.getElementById('goMainBtn').addEventListener('click', function() {
+            window.location.href = '../Index.html';
+        });
+    </script>
+</body>
+</html>

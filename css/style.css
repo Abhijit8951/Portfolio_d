@@ -1,0 +1,146 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+body {
+    min-height: 100vh;
+    min-width: 100vw;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+    /* Ensure background is visible even with canvas overlay */
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%) !important;
+}
+.navbar {
+    position: absolute;
+    top: 200px;
+    left: 32px;
+    transform: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 32px;
+    z-index: 10;
+}
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    padding: 8px 18px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+}
+.navbar a:hover, .navbar a.active {
+    background: linear-gradient(90deg, #ff6a00 0%, #ee0979 100%);
+    color: #fff;
+    transform: translateX(5px);
+}
+.main-content {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    pointer-events: none;
+}
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    pointer-events: auto;
+    padding: 40px 32px 32px 32px;
+    max-width: 600px;
+    width: 100%;
+    margin-left: 10%;
+}
+.hero-content h1 {
+    font-size: 2.8em;
+    margin: 0 0 18px 0;
+    color: #ee0979;
+    text-shadow: 1px 2px 8px #fff2, 0 1px 0 #fff8;
+}
+.hero-content .intro {
+    font-size: 1.5em;
+    color: #fff;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+.hero-content .dynamic-roles {
+    font-size: 2em;
+    font-weight: bold;
+    color: #ff6a00;
+    min-height: 1.2em;
+    margin-bottom: 18px;
+    transition: color 0.4s;
+}
+.social-links {
+    margin-top: 18px;
+    display: flex;
+    gap: 18px;
+}
+.social-links a {
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+.social-links a:hover {
+    background: linear-gradient(90deg, #ff6a00 0%, #ee0979 100%);
+    transform: translateY(-2px);
+}
+#threejs-bg {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    pointer-events: none;
+    /* Make canvas transparent so background shows through */
+    background: transparent !important;
+}
+.cursor-tracker {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.3);
+    border: 2px solid #fff;
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s, height 0.2s, background 0.2s;
+    z-index: 9999;
+}
+
+.cursor-tracker.active {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #ff6a00;
+}
+
+@media (max-width: 600px) {
+    .hero-content {
+        padding: 24px 8px 18px 8px;
+    }
+    .hero-content h1 {
+        font-size: 2em;
+    }
+    .hero-content .intro, .hero-content .dynamic-roles {
+        font-size: 1.1em;
+    }
+}

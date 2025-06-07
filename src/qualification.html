@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhijit Swain | Qualifications</title>
+    <link rel="stylesheet" href="../css/qualification.css">
+</head>
+<body>
+    <div class="cursor-tracker" id="cursorTracker"></div>
+    <div class="qual-container">
+        <div class="qual-title">Academic Qualifications</div>
+        <table class="qual-table">
+            <thead>
+                <tr>
+                    <th>Degree</th>
+                    <th>Institution</th>
+                    <th>Year</th>
+                    <th>Result</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Bachelor of computer Application</td>
+                    <td>Regional college of management, Bhubaneswar</td>
+                    <td>2024</td>
+                    <td>8.7 CGPA)</td>
+                </tr>
+                <tr>
+                    <td>12th (CHSE, Science)</td>
+                    <td>Maharishi college of natural law, Bhubaneswar</td>
+                    <td>2021</td>
+                    <td>67.5%</td>
+                </tr>
+                <tr>
+                    <td>10th (BSE)</td>
+                    <td>Sai integral school, Pipili</td>
+                    <td>2018</td>
+                    <td>85.5%</td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="go-main-btn" id="goMainBtn">Go to Main Page</button>
+    </div>
+    <script>
+        const cursor = document.getElementById('cursorTracker');
+
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+        let trackerX = mouseX;
+        let trackerY = mouseY;
+        const delay = 0.18;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function animateCursor() {
+            trackerX += (mouseX - trackerX) * delay;
+            trackerY += (mouseY - trackerY) * delay;
+            cursor.style.left = trackerX + 'px';
+            cursor.style.top = trackerY + 'px';
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        const interactiveSelectors = [
+            'a', 'button', 'input', 'textarea', 'select', 'label', 'th', 'td'
+        ];
+        interactiveSelectors.forEach(selector => {
+            document.querySelectorAll(selector).forEach(el => {
+                el.addEventListener('mouseenter', () => cursor.classList.add('active'));
+                el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
+            });
+        });
+
+        document.getElementById('goMainBtn').addEventListener('click', function() {
+            window.location.href = '../Index.html';
+        });
+    </script>
+</body>
+</html>

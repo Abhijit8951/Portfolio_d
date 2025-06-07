@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhijit Swain | Landing Page</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div class="cursor-tracker" id="cursorTracker"></div>
+    <nav class="navbar" id="navbar">
+        <a href="src/skills.html" target="_blank" id="skillsLink">Skills</a>
+        <a href="src/qualification.html" target="_blank" id="qualificationLink">Qualifications</a>
+        <a href="#" data-section="strengths">Strengths</a>
+        <a href="#" data-section="weakness">Weakness</a>
+        <a href="#" data-section="vishal-bill">Vishal Mega Mart Bill</a>
+    </nav>
+    <canvas id="threejs-bg"></canvas>
+    <main class="main-content">
+        <div class="hero-content">
+            <h1>Hi, I am Abhijit</h1>
+            <div class="intro">
+                I am a <span class="dynamic-roles" id="dynamicRoles"></span>
+            </div>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/abhijit-swain-323823250/" target="_blank">LinkedIn</a>
+                <a href="https://github.com/Abhijit8951" target="_blank">GitHub</a>
+                <a href="https://leetcode.com/u/Abhijit119/" target="_blank">Leetcode</a>
+                <a href="https://medium.com/@swain.abhijit0119" target="_blank">Medium</a>
+            </div>
+        </div>
+    </main>
+    <script>
+        const cursor = document.getElementById('cursorTracker');
+
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+        let trackerX = mouseX;
+        let trackerY = mouseY;
+        const delay = 0.18;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function animateCursor() {
+            trackerX += (mouseX - trackerX) * delay;
+            trackerY += (mouseY - trackerY) * delay;
+            cursor.style.left = trackerX + 'px';
+            cursor.style.top = trackerY + 'px';
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        const interactiveSelectors = [
+            'a', 'button', 'input', 'textarea', 'select', 'label', 'th', 'td'
+        ];
+        interactiveSelectors.forEach(selector => {
+            document.querySelectorAll(selector).forEach(el => {
+                el.addEventListener('mouseenter', () => cursor.classList.add('active'));
+                el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
+            });
+        });
+
+        // Navbar
+        const navbar = document.getElementById('navbar');
+        navbar.addEventListener('click', function(e) {
+            if (e.target.tagName === 'A') {
+                const href = e.target.getAttribute('href');
+                if (
+                    !(href && (href.includes('skills.html') || href.includes('qualification.html')))
+                ) {
+                    e.preventDefault();
+                    navbar.querySelectorAll('a').forEach(a => a.classList.remove('active'));
+                    e.target.classList.add('active');
+                }
+            }
+        });
+
+        // Dynamic Typing
+        const roles = [
+            "Software engineer",
+            "UI/UX designer"
+        ];
+        const dynamicRoles = document.getElementById('dynamicRoles');
+        let roleIndex = 0, charIndex = 0, typing = true;
+
+        function typeRole() {
+            const currentRole = roles[roleIndex];
+            if (typing) {
+                if (charIndex < currentRole.length) {
+                    dynamicRoles.textContent += currentRole.charAt(charIndex);
+                    charIndex++;
+                    setTimeout(typeRole, 70);
+                } else {
+                    typing = false;
+                    setTimeout(typeRole, 1200);
+                }
+            } else {
+                if (charIndex > 0) {
+                    dynamicRoles.textContent = currentRole.substring(0, charIndex - 1);
+                    charIndex--;
+                    setTimeout(typeRole, 35);
+                } else {
+                    typing = true;
+                    roleIndex = (roleIndex + 1) % roles.length;
+                    setTimeout(typeRole, 400);
+                }
+            }
+        }
+        typeRole();
+
+        window.addEventListener('resize', onResize);
+    </script>
+</body>
+</html>

@@ -18,7 +18,7 @@
             <li><strong>UI/UX Design</strong> — Creating intuitive and visually appealing user interfaces with a focus on user experience.</li>
             <li><strong>Version Control (Git)</strong> — Collaborative development and code management using Git and GitHub.</li>
         </ul>
-        <button class="go-main-btn" id="goMainBtn">Go to Main Page</button>
+        <a href="../Index.html" class="back-home-btn" id="backHomeBtn">← Back to Home</a>
     </div>
     <script>
         const cursor = document.getElementById('cursorTracker');
@@ -53,7 +53,7 @@
             });
         });
 
-        document.getElementById('goMainBtn').addEventListener('click', function() {
+        document.getElementById('backHomeBtn').addEventListener('click', function() {
             window.location.href = '../Index.html';
         });
     </script>

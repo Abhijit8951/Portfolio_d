@@ -5,36 +5,6 @@ body {
     padding: 0;
     min-height: 100vh;
 }
-.skills-container {
-    max-width: 700px;
-    margin: 80px auto 0 auto;
-    background: #fff;
-    border-radius: 18px;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.07);
-    padding: 40px 32px 32px 32px;
-    position: relative;
-}
-.skills-title {
-    color: #0078d7;
-    margin-bottom: 12px;
-    font-size: 2.2rem;
-    letter-spacing: 1px;
-}
-.skills-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-.skills-list li {
-    margin-bottom: 18px;
-    font-size: 1.15rem;
-    display: flex;
-    align-items: flex-start;
-    color: #333;
-}
-.skills-list li strong {
-    color: #0078d7;
-}
 .cursor-tracker {
     position: fixed;
     top: 0;
@@ -52,6 +22,39 @@ body {
 .cursor-tracker.active {
     background: rgba(0,120,215,0.18);
     border-color: #005fa3;
+}
+.strengths-container {
+    max-width: 700px;
+    margin: 80px auto 0 auto;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+    padding: 40px 32px 32px 32px;
+    position: relative;
+}
+h1 {
+    color: #0078d7;
+    margin-bottom: 12px;
+    font-size: 2.2rem;
+    letter-spacing: 1px;
+}
+ul.strengths-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+ul.strengths-list li {
+    margin-bottom: 18px;
+    font-size: 1.15rem;
+    display: flex;
+    align-items: flex-start;
+}
+ul.strengths-list li::before {
+    content: "✔";
+    color: #0078d7;
+    margin-right: 12px;
+    font-size: 1.2em;
+    margin-top: 2px;
 }
 .back-home-btn {
     display: inline-block;
@@ -75,10 +78,10 @@ body {
     transform: translateY(-2px) scale(1.03);
 }
 @media (max-width: 600px) {
-    .skills-container {
+    .strengths-container {
         padding: 22px 8px 18px 8px;
     }
-    .skills-title {
+    h1 {
         font-size: 1.3rem;
     }
     .back-home-btn {

@@ -1,11 +1,29 @@
 body {
     font-family: 'Segoe UI', Arial, sans-serif;
-    background: linear-gradient(135deg, #e0e7ff 0%, #f7f8fa 60%, #cbeafe 100%);
+    background: linear-gradient(135deg, #fbeffb 0%, #f7f8fa 60%, #fee2e2 100%);
     margin: 0;
     padding: 0;
     min-height: 100vh;
 }
-.skills-container {
+.cursor-tracker {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 28px;
+    height: 28px;
+    border: 2px solid #e11d48;
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: background 0.2s, border 0.2s;
+    z-index: 9999;
+    background: rgba(225,29,72,0.08);
+}
+.cursor-tracker.active {
+    background: rgba(225,29,72,0.18);
+    border-color: #be123c;
+}
+.weakness-container {
     max-width: 700px;
     margin: 80px auto 0 auto;
     background: #fff;
@@ -14,71 +32,56 @@ body {
     padding: 40px 32px 32px 32px;
     position: relative;
 }
-.skills-title {
-    color: #0078d7;
+h1 {
+    color: #e11d48;
     margin-bottom: 12px;
     font-size: 2.2rem;
     letter-spacing: 1px;
 }
-.skills-list {
+ul.weakness-list {
     list-style: none;
     padding: 0;
     margin: 0;
 }
-.skills-list li {
+ul.weakness-list li {
     margin-bottom: 18px;
     font-size: 1.15rem;
     display: flex;
     align-items: flex-start;
-    color: #333;
 }
-.skills-list li strong {
-    color: #0078d7;
-}
-.cursor-tracker {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 28px;
-    height: 28px;
-    border: 2px solid #0078d7;
-    border-radius: 50%;
-    pointer-events: none;
-    transform: translate(-50%, -50%);
-    transition: background 0.2s, border 0.2s;
-    z-index: 9999;
-    background: rgba(0,120,215,0.08);
-}
-.cursor-tracker.active {
-    background: rgba(0,120,215,0.18);
-    border-color: #005fa3;
+ul.weakness-list li::before {
+    content: "✖";
+    color: #e11d48;
+    margin-right: 12px;
+    font-size: 1.2em;
+    margin-top: 2px;
 }
 .back-home-btn {
     display: inline-block;
     margin-top: 28px;
     padding: 10px 28px;
-    background: linear-gradient(90deg, #0078d7 0%, #38bdf8 100%);
+    background: linear-gradient(90deg, #e11d48 0%, #f472b6 100%);
     color: #fff;
     border: none;
     border-radius: 8px;
     font-size: 1.08rem;
     font-weight: 500;
     cursor: pointer;
-    box-shadow: 0 2px 8px rgba(0,120,215,0.08);
+    box-shadow: 0 2px 8px rgba(225,29,72,0.08);
     transition: background 0.18s, box-shadow 0.18s, transform 0.12s;
     text-decoration: none;
     outline: none;
 }
 .back-home-btn:hover, .back-home-btn:focus {
-    background: linear-gradient(90deg, #005fa3 0%, #0ea5e9 100%);
-    box-shadow: 0 4px 16px rgba(0,120,215,0.13);
+    background: linear-gradient(90deg, #be123c 0%, #f472b6 100%);
+    box-shadow: 0 4px 16px rgba(225,29,72,0.13);
     transform: translateY(-2px) scale(1.03);
 }
 @media (max-width: 600px) {
-    .skills-container {
+    .weakness-container {
         padding: 22px 8px 18px 8px;
     }
-    .skills-title {
+    h1 {
         font-size: 1.3rem;
     }
     .back-home-btn {

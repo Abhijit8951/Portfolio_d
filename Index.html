@@ -11,8 +11,8 @@
     <nav class="navbar" id="navbar">
         <a href="src/skills.html" target="_blank" id="skillsLink">Skills</a>
         <a href="src/qualification.html" target="_blank" id="qualificationLink">Qualifications</a>
-        <a href="#" data-section="strengths">Strengths</a>
-        <a href="#" data-section="weakness">Weakness</a>
+        <a href="src/strengths.html" target="_blank">Strengths</a>
+        <a href="src/weakness.html" target="_blank">Weakness</a>
         <a href="#" data-section="vishal-bill">Vishal Mega Mart Bill</a>
     </nav>
     <canvas id="threejs-bg"></canvas>
@@ -69,7 +69,7 @@
             if (e.target.tagName === 'A') {
                 const href = e.target.getAttribute('href');
                 if (
-                    !(href && (href.includes('skills.html') || href.includes('qualification.html')))
+                    !(href && (href.includes('skills.html') || href.includes('qualification.html') || href.includes('strengths.html') || href.includes('weakness.html')))
                 ) {
                     e.preventDefault();
                     navbar.querySelectorAll('a').forEach(a => a.classList.remove('active'));
